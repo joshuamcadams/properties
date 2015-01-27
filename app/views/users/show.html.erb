@@ -1,0 +1,11 @@
+<% @page_title = 'Create User' %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="user new">
+  <h2><%= @user.name %></h2>
+
+  <p><% @user.internal_properties.map do |prop| %>
+  	<%= prop.name %><br>
+  	<% end %></p>
+</div>
