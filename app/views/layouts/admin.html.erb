@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>Property</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+	</head>
+  <body>
+
+   <%= render(:partial => 'layouts/nav') %>
+
+    <div id="main-container" class="container-fluid">
+    
+    	<% if !flash[:notice].blank? %>
+			 <div class="row">
+        <div class="col-xs-12">
+					<%=flash[:notice] %>
+				</div>
+			<%end%>
+			</div>
+       
+      
+      <div class="container-fluid">
+ 					<%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,35 +1,49 @@
 <% @page_title = "Admin Users List" %>
 
-<%= link_to("<< Back to Menu", {:controller => 'access', :action => 'index'}, :class => 'back-link') %>
+       
 
-<div class="user index">
-  <h2>Admin Users</h2>
+  <div class="row">
+    <div class="col-xs-10">
+      <h2 class="pull-left">Agents</h2>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to('Add New Agent', {:action => 'new'}, :class => 'btn btn-default pull-right', :style => 'margin-top:20px;') %>
+    </div>
+  </div>
 
-  <%= link_to('Add New User', {:action => 'new'}, :class => 'action new') %>
+  
+  <div class="row">
+    <div class="col-xs-12">
+     <%= pluralize(@users.size, 'agent') %> found
+    </div>
+  </div>
 
-  <div><%= pluralize(@users.size, 'user') %> found</div>
-
-  <table class="listing" summary="users list">
-    <tr>
-      <th>User</th>
-       <th>Title</th>
-      <th>Email</th>
-      <th>Bio</th>
-      <th>Actions</th>
-    </tr>
-    <% @users.each do |user| %>
-    <tr class="<%= cycle('odd', 'even') %>">
-    	<td><%= link_to(user.name, {:action => 'show', :id => user.id}, :class => 'show') %></td>
-    
-      <td><%= user.title %></td>
-      <td><%= mail_to(user.email) %></td>
-      <td><%= truncate(user.bio, :limit => 10,  :omission => "...")%></td>
-      <td class="actions">
-        <%= link_to('Edit', {:action => 'edit', :id => user.id}, :class => 'action edit') %>
-        <%= link_to('Delete', {:action => 'delete', :id => user.id}, :class => 'action delete') %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+      <tr>
+        <th>Agent</th>
+         <th>Title</th>
+        <th>Email</th>
+        <th>Bio</th>
+        <th>Actions</th>
+      </tr>
+      <% @users.each do |user| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+      	<td><%= link_to(user.name, {:action => 'show', :id => user.id}, :class => 'btn btn-info') %></td>
+      
+        <td><%= user.title %></td>
+        <td><%= mail_to(user.email) %></td>
+        <td><%= truncate(user.bio, :limit => 10,  :omission => "...")%></td>
+        <td>
+          <%= link_to('Edit', {:action => 'edit', :id => user.id}, :class => 'btn btn-default') %>
+          <%= link_to('Delete', {:action => 'delete', :id => user.id}, :class => 'btn btn-default') %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
+
+
+

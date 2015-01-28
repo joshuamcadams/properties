@@ -2,15 +2,15 @@
 
 <%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
-<div class="user edit">
-  <h2>Edit Admin User</h2>
+
+  <h2>Edit <%= @user.name %></h2>
 
   <%= form_for(:user, :url => {:action => 'update', :id => @user.id}) do |f| %>
 
     <%= render(:partial => 'form', :locals => {:f => f} ) %>
 
-    <div class="form-buttons">
-      <%= submit_tag('Update User') %>
-    </div>
+
+    <%= submit_tag('Update Agent') %>
+
   <% end %>
 </div>
