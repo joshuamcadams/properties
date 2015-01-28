@@ -1,0 +1,11 @@
+<% @page_title = 'Create User' %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="user new">
+  <h2><%= @property.name %></h2>
+
+ <p><%= image_tag @property.image_url.to_s %></p>
+ <p><%= image_tag @property.image_url(:thumb).to_s %></p>
+  
+</div>

@@ -1,0 +1,17 @@
+<% @page_title = 'Create User' %>
+
+<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <%= link_to("Back to List", {:action => 'index'}, :class => '') %>
+
+<div class="user new">
+  <h2>Create Property</h2>
+
+  <%= form_for(:property, :url => {:action => 'create'}) do |f| %>
+
+    <%= render(:partial => 'form', :locals => {:f => f} ) %>
+
+  
+      <%= submit_tag('Create Property') %>
+
+
+  <% end %>
+</div>

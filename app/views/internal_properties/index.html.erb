@@ -1,0 +1,48 @@
+<% @page_title = "Admin Users List" %>
+
+       
+
+  <div class="row">
+    <div class="col-xs-10">
+      <h2 class="pull-left">Properties</h2>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to('Add New Property', {:action => 'new'}, :class => 'btn btn-default pull-right', :style => 'margin-top:20px;') %>
+    </div>
+  </div>
+
+  
+  <div class="row">
+    <div class="col-xs-12">
+     <%= pluralize(@properties.size, 'property') %> found
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <table class="table">
+      <tr>
+        <th>Name</th>
+         <th>Price</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+      <% @properties.each do |property| %>
+      <tr class="<%= cycle('odd', 'even') %>">
+      	<td><%= link_to(property.name, {:action => 'show', :id => property.id}, :class => 'btn btn-info') %></td>
+        <td><%= number_to_currency(property.price, :unit => "$") %></td>
+        <td><%= property.address %></td>
+      
+        <td>
+          <%= link_to('Edit', {:action => 'edit', :id => property.id}, :class => 'btn btn-default') %>
+          <%= link_to('Delete', {:action => 'delete', :id => property.id}, :class => 'btn btn-default') %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+
+
