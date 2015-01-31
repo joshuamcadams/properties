@@ -15,9 +15,14 @@ layout "admin"
   end
 
   def create
-
-    @property = InternalProperty.new(property_params)
-    if @property.save
+    property = InternalProperty.new(property_params)
+    if property.save
+      if property_params[:image].present?
+        property_params[:image].each do |i|
+          photo = Photo.new(:image => i, :internal_property_id => property.id)
+          photo.save
+       end
+      end
       flash[:notice] = 'New Property Created.'
       redirect_to(:action => 'index')
     else
@@ -28,11 +33,19 @@ layout "admin"
     def edit
     @users = User.order("first_name ASC")
     @property = InternalProperty.find(params[:id])
+    #@photos = @property.photos
+    @photos = @property.photos.order(:position)
   end
 
   def update
     @property = InternalProperty.find(params[:id])
     if @property.update_attributes(property_params)
+       if property_params[:image].present?
+        property_params[:image].each do |i|
+          photo = Photo.new(:image => i, :internal_property_id => @property.id)
+          photo.save
+       end
+      end
       flash[:notice] = 'Property updated.'
       redirect_to(:action => 'index')
     else
@@ -53,7 +66,7 @@ layout "admin"
   private
 
   def property_params
-    params.require(:property).permit(:name, :price, :address, :description, :short_description, :user_id, :image)
+    params.require(:property).permit(:name, :price, :address, :description, :short_description, :user_id, image: [])
   end
 
 end

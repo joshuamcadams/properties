@@ -1,3 +1,13 @@
 // Place all the styles related to the InternalProperties controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#photos li {float:left;width:126px; 
+    height:120px;
+    padding:3px;
+    margin:0px 10px 10px 0px; 
+    border: #ccc 1px solid;}
+
+#photos {list-style-type:none;
+    
+    }

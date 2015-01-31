@@ -2,10 +2,13 @@
 
 <%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
 
-<div class="user new">
+<div class="row">
+	 <div class="col-xs-6">
   <h2><%= @property.name %></h2>
-
- <p><%= image_tag @property.image_url.to_s %></p>
- <p><%= image_tag @property.image_url(:thumb).to_s %></p>
-  
+ 	</div>
+ 	 <div class="col-xs-6">
+ 	 <% @property.photos.each do |photo| %>
+		 <%= image_tag photo.image_url(:thumb).to_s %>
+		<% end %>
+	</div>
 </div>

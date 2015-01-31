@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-match ':controller(/:action(/:id))', :via => [:get, :post]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -28,6 +28,10 @@ match ':controller(/:action(/:id))', :via => [:get, :post]
   #     end
   #   end
 
+  resources :photos do
+    collection {post :sort}
+  end
+ match ':controller(/:action(/:id))', :via => [:get, :post]
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

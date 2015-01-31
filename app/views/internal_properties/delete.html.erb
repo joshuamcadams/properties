@@ -1,2 +1,19 @@
-<h1>InternalProperties#delete</h1>
-<p>Find me in app/views/internal_properties/delete.html.erb</p>
+<% @page_title = "Delete Property: #{@property.name}" %>
+
+<%= link_to("<< Back to List", {:action => 'index'}, :class => 'back-link') %>
+
+<div class="user delete">
+  <h2>Delete Admin User</h2>
+
+  <%= form_for(:property, :url => {:action => 'destroy', :id => @property.id}) do |f| -%>
+
+    <p>Are you sure you want to permanently delete this admin user?</p>
+
+    <p class="reference-name"><%= @property.name %></p>
+
+    <div class="form-buttons">
+      <%= submit_tag("Delete Property") %>
+    </div>
+
+  <% end %>
+</div>

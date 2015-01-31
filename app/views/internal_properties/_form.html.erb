@@ -24,10 +24,6 @@
 </div>
 
 <div class="form-group">  
-  <%= f.label(:image, "Photo") %>
-  <%= f.file_field(:image, :class => 'form-control') %>
+  <%= f.label(:image, "Photos") %>
+  <%= f.file_field(:image, :multiple => true, :class => 'form-control') %>
 </div>
-   
-
-
-
