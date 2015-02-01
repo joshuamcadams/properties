@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12">
+      <h2 class="pull-left">Properties</h2>
+    </div>
+    
+  </div>
+
+  
+  <div class="row">
+    <div class="col-xs-12">
+     <%= pluralize(@properties.size, 'property') %> found
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-xs-12">
+  <% @properties.each do |property| %>
+  	<ul id="photos">
+	  	<li><%= image_tag property.photos.first.image_url(:thumb).to_s %><br>
+	  	<%= link_to(property.name, {:action => 'show', :id => property.id}) %><br>
+	  	<%= number_to_currency(property.price, :unit => "$") %></li>
+  	</ul>
+    <% end %>
+  </div>
+</div>
